@@ -13,6 +13,5 @@ RUN apt-get update && \
     echo "export PATH=$PATH:$GOBIN" > /root/.bashrc && \
     cd $PROJECTDIR && $GOBIN/dep ensure
 
-
 CMD ["go", "run", "main.go"]
 
