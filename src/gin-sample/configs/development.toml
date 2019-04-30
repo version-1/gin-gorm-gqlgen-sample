@@ -1,0 +1,6 @@
+[database]
+user = "root"
+password = ""
+address = "tcp(db:3306)"
+name = "gin_sample"
+

@@ -1,0 +1,5 @@
+/data/
+/pkg/
+/src/gin-sample/vendor/
+
+.DS_Store
