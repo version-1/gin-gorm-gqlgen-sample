@@ -5,12 +5,14 @@ import (
 	"gin-sample/pkg"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"strconv"
 )
 
 func main() {
 	r := gin.Default()
 	db := pkg.Connect("development")
 	defer db.Close()
+	db.LogMode(true)
 
 	r.GET("/products", func(c *gin.Context) {
 		var products []models.Product
@@ -27,10 +29,12 @@ func main() {
 
 	r.POST("/products", func(c *gin.Context) {
 		product := models.Product{}
-		err := c.BindJSON(&product)
+		err := c.Bind(&product)
 		if err != nil {
 			c.String(http.StatusBadRequest, "Request is failed: "+err.Error())
+			return
 		}
+		db.NewRecord(&product)
 		res := db.Create(&product)
 		if res.Error != nil {
 			c.JSON(402, res.Error)
@@ -40,22 +44,23 @@ func main() {
 	})
 
 	r.PUT("/products/:id", func(c *gin.Context) {
-		id := c.Param("id")
+		id, _ := strconv.Atoi(c.Param("id"))
 		product := models.Product{}
 		db.First(&product, id)
 
 		params := models.Product{}
-		err := c.BindJSON(&params)
+		err := c.Bind(&params)
 		if err != nil {
 			c.String(http.StatusBadRequest, "Request is failed: "+err.Error())
+			return
 		}
 		db.Model(&product).Updates(params)
 		c.JSON(200, product)
 	})
 
 	r.DELETE("/products/:id", func(c *gin.Context) {
-		id := c.Param("id")
-		db.Delete(id)
+		id, _ := strconv.Atoi(c.Param("id"))
+		db.Where("ID = ?", id).Delete(&models.Product{})
 		c.JSON(200, nil)
 	})
 	r.Run() // listen and serve on 0.0.0.0:8080

@@ -14,6 +14,7 @@ func Connect(env string) *gorm.DB {
 		Net:                  dbConf.Address,
 		DBName:               dbConf.Name,
 		AllowNativePasswords: true,
+		ParseTime:            true,
 	}
 
 	dsn := mysqlConf.FormatDSN()
