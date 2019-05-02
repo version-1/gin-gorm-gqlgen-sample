@@ -9,8 +9,7 @@ ADD . $ROOTDIR
 
 RUN apt-get update && \
     apt-get -y install mysql-client && \
-    echo "export PATH=$PATH:$GOBIN" > /root/.bashrc && \
-    cd $WORKDIR && $GOBIN/dep ensure
+    echo "export PATH=$PATH:$GOBIN" > /root/.bashrc
 
 CMD ["go", "run", "cmd/app/main.go"]
 
