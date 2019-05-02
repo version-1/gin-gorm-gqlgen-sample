@@ -1,13 +1,12 @@
 package pkg
 
 import (
-	"gin-sample/configs"
 	"github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 )
 
 func Connect(env string) *gorm.DB {
-	dbConf := configs.GetConfig(env).Database
+	dbConf := GetConfig(env).Database
 	mysqlConf := mysql.Config{
 		User:                 dbConf.User,
 		Passwd:               dbConf.Password,
