@@ -2,8 +2,12 @@ package gin_graphql
 
 import (
 	"context"
+	"fmt"
 	"gin_graphql/internal/models"
+	connection "gin_graphql/pkg/database"
 )
+
+var db = connection.GetInstance()
 
 // THIS CODE IS A STARTING POINT ONLY. IT WILL NOT BE UPDATED WITH SCHEMA CHANGES.
 
@@ -21,12 +25,16 @@ func (r *Resolver) Query() QueryResolver {
 type mutationResolver struct{ *Resolver }
 
 func (r *mutationResolver) CreateTodo(ctx context.Context, input NewTodo) (*models.Todo, error) {
-	todo := &models.Todo{
+	todo := models.Todo{
 		Text:   input.Text,
 		UserID: input.UserID,
 	}
+
+	fmt.Println(db)
+	_todo := db.NewRecord(todo)
+	fmt.Println(_todo)
 	// r.todos = append(r.todos, *todo)
-	return todo, nil
+	return &todo, nil
 }
 
 type queryResolver struct{ *Resolver }

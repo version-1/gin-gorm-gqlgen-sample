@@ -3,6 +3,7 @@ package main
 import (
 	graphql "gin_graphql"
 	"gin_graphql/internal/middlewares"
+	db "gin_graphql/pkg/database"
 	"github.com/99designs/gqlgen/handler"
 	"github.com/gin-gonic/gin"
 )
@@ -23,6 +24,8 @@ func playgroundHandler() gin.HandlerFunc {
 }
 
 func main() {
+	db.GetInstance()
+	defer db.Close()
 	r := gin.Default()
 	r.Use(middlewares.GinContextToContextMiddleware())
 	r.POST("/query", graphqlHandler())
