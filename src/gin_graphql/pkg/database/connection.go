@@ -1,7 +1,6 @@
 package database
 
 import (
-	"fmt"
 	"gin_graphql/pkg/config"
 	"github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
@@ -36,8 +35,10 @@ func GetInstance() *gorm.DB {
 	env := os.Getenv("ENV")
 	once.Do(func() {
 		instance = Connect(env)
+		if env != "production" {
+			instance.LogMode(true)
+		}
 	})
-	fmt.Println("env", env, "init:", &instance)
 	return instance
 }
 

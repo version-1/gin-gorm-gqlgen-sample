@@ -2,7 +2,6 @@ package gin_graphql
 
 import (
 	"context"
-	"fmt"
 	"gin_graphql/internal/models"
 	connection "gin_graphql/pkg/database"
 )
@@ -30,10 +29,7 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input NewTodo) (*mode
 		UserID: input.UserID,
 	}
 
-	fmt.Println(db)
-	_todo := db.NewRecord(todo)
-	fmt.Println(_todo)
-	// r.todos = append(r.todos, *todo)
+	db.Model(&models.ExtendedTodo{}).Create(&todo)
 	return &todo, nil
 }
 
