@@ -1,5 +1,5 @@
 /data/
 /pkg/
-/src/gin-sample/vendor/
+/src/gin_graphql/vendor/
 
 .DS_Store

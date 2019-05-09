@@ -4,9 +4,11 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-type Product struct {
+type User struct {
+	Name string
+}
+
+type ExtendedUser struct {
 	gorm.Model
-	ID    int
-	Code  string
-	Price uint
+	User
 }

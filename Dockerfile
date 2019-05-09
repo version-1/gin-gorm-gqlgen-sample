@@ -1,6 +1,6 @@
 FROM golang:latest
 ENV ROOTDIR /app
-ENV WORKDIR /app/src/gin-sample
+ENV WORKDIR /app/src/gin_graphql
 ENV GOPATH $ROOTDIR
 ENV GOBIN $ROOTDIR/bin
 WORKDIR $WORKDIR

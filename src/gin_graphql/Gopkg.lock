@@ -2,12 +2,45 @@
 
 
 [[projects]]
+  digest = "1:1e881ec8b815b2838129e274ff34484af0f0b0dc7170cf39f66a4a0e6d04db89"
+  name = "github.com/99designs/gqlgen"
+  packages = [
+    ".",
+    "api",
+    "cmd",
+    "codegen",
+    "codegen/config",
+    "codegen/templates",
+    "complexity",
+    "graphql",
+    "graphql/introspection",
+    "handler",
+    "internal/code",
+    "internal/imports",
+    "plugin",
+    "plugin/modelgen",
+    "plugin/resolvergen",
+    "plugin/servergen",
+  ]
+  pruneopts = "UT"
+  revision = "010a79b66f08732cb70d133dcab297a8ee895572"
+  version = "v0.8.3"
+
+[[projects]]
   digest = "1:9f3b30d9f8e0d7040f729b82dcbc8f0dead820a133b3147ce355fc451f32d761"
   name = "github.com/BurntSushi/toml"
   packages = ["."]
   pruneopts = "UT"
   revision = "3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005"
   version = "v0.3.1"
+
+[[projects]]
+  digest = "1:786e862ec180708b60ee670723e3edd969fd4309e7b1c315cd7de058ac62a011"
+  name = "github.com/agnivade/levenshtein"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "51b298ff305e72cfd29166dccc3f9878e82f9fdc"
+  version = "v1.0.2"
 
 [[projects]]
   branch = "master"
@@ -45,6 +78,25 @@
   pruneopts = "UT"
   revision = "b5d812f8a3706043e23a9cd5babf2e5423744d30"
   version = "v1.3.1"
+
+[[projects]]
+  digest = "1:7b5c6e2eeaa9ae5907c391a91c132abfd5c9e8a784a341b5625e750c67e6825d"
+  name = "github.com/gorilla/websocket"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d"
+  version = "v1.4.0"
+
+[[projects]]
+  digest = "1:d15ee511aa0f56baacc1eb4c6b922fa1c03b38413b6be18166b996d82a0156ea"
+  name = "github.com/hashicorp/golang-lru"
+  packages = [
+    ".",
+    "simplelru",
+  ]
+  pruneopts = "UT"
+  revision = "7087cb70de9f7a8bc0a10c375cb0d2280a8edf9c"
+  version = "v0.5.1"
 
 [[projects]]
   digest = "1:999a99d21fbc91dc128d1774e49669d0e9a7cded86669001e96aa993124f7a89"
@@ -95,6 +147,14 @@
   version = "1.0.1"
 
 [[projects]]
+  digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
+  version = "v0.8.1"
+
+[[projects]]
   digest = "1:d0072748c62defde1ad99dde77f6ffce492a0e5aea9204077e497c7edfb86653"
   name = "github.com/ugorji/go"
   packages = ["codec"]
@@ -103,12 +163,67 @@
   version = "v1.1.4"
 
 [[projects]]
+  digest = "1:b24d38b282bacf9791408a080f606370efa3d364e4b5fd9ba0f7b87786d3b679"
+  name = "github.com/urfave/cli"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "cfb38830724cc34fedffe9a2a29fb54fa9169cd1"
+  version = "v1.20.0"
+
+[[projects]]
+  digest = "1:f9753c5953422303cf3050026064e2c9125600eaeb4ed8ad4a3fb688b55a111d"
+  name = "github.com/vektah/dataloaden"
+  packages = [
+    ".",
+    "pkg/generator",
+  ]
+  pruneopts = "UT"
+  revision = "ce6bd88c89ceb3253530e7f2260ef5200ef071f9"
+  version = "v0.2.0"
+
+[[projects]]
+  digest = "1:b4e8aaca88f799355f4ac560bce4293fb85ff21003dd0d5741ca503f7a788e91"
+  name = "github.com/vektah/gqlparser"
+  packages = [
+    ".",
+    "ast",
+    "gqlerror",
+    "lexer",
+    "parser",
+    "validator",
+    "validator/rules",
+  ]
+  pruneopts = "UT"
+  revision = "05741cdb0871330d8bc980d4afd21ab34eceee83"
+  version = "v1.1.2"
+
+[[projects]]
   branch = "master"
   digest = "1:157e5158a7f29d6633eed502880463aa43de3c36d451c7051591efd12f455ac8"
   name = "golang.org/x/sys"
   packages = ["unix"]
   pruneopts = "UT"
   revision = "a129542de9ae0895210abff9c95d67a1f33cb93d"
+
+[[projects]]
+  branch = "master"
+  digest = "1:93f3f17886abf8d17ff07ece88d6e1974226f5638d216041bd2234ca03ef848c"
+  name = "golang.org/x/tools"
+  packages = [
+    "go/ast/astutil",
+    "go/gcexportdata",
+    "go/internal/gcimporter",
+    "go/internal/packagesdriver",
+    "go/packages",
+    "go/types/typeutil",
+    "imports",
+    "internal/fastwalk",
+    "internal/gopathwalk",
+    "internal/module",
+    "internal/semver",
+  ]
+  pruneopts = "UT"
+  revision = "3b6f9c0030f769fa3ded8a7f0d9420c71ac20caf"
 
 [[projects]]
   digest = "1:c25289f43ac4a68d88b02245742347c94f1e108c534dda442188015ff80669b3"
@@ -138,6 +253,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/99designs/gqlgen",
     "github.com/BurntSushi/toml",
     "github.com/gin-gonic/gin",
     "github.com/go-sql-driver/mysql",
