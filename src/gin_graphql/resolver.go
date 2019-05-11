@@ -2,6 +2,7 @@ package gin_graphql
 
 import (
 	"context"
+	"fmt"
 	"gin_graphql/internal/models"
 	connection "gin_graphql/pkg/database"
 )
@@ -27,9 +28,9 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input NewTodo) (*mode
 	todo := models.Todo{
 		Text:   input.Text,
 		UserID: input.UserID,
+		Done:   false,
 	}
-
-	db.Model(&models.ExtendedTodo{}).Create(&todo)
+	db.Create(&todo)
 	return &todo, nil
 }
 

@@ -2,15 +2,19 @@ package models
 
 import (
 	"github.com/jinzhu/gorm"
+	"time"
 )
 
 type Todo struct {
-	Text   string
-	Done   bool
-	UserID int
+	ID        int
+	Text      string
+	Done      bool
+	UserID    int
+	CreatedAt time.Time
+	UpdatedAt time.Time
 }
 
-type ExtendedTodo struct {
+type GTodo struct {
 	gorm.Model
 	Todo
 }

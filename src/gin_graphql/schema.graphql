@@ -3,9 +3,12 @@
 # https://gqlgen.com/getting-started/
 
 type Todo {
+  id:   Int!
   text: String!
   done: Boolean!
   userID: Int!
+  createdAt: Time!
+  updatedAt: Time!
 }
 
 type User {
@@ -24,3 +27,5 @@ input NewTodo {
 type Mutation {
   createTodo(input: NewTodo!): Todo!
 }
+
+scalar Time
