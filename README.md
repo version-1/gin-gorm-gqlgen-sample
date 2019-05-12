@@ -19,18 +19,68 @@ go run cmd/app/main.go
 ## Query
 
 ```
-# INDEX
-curl localhost:8080/products
+mutation createTodo {
+  createTodo(input:{text: "first", userId: 1}) {
+    id
+    text
+    createdAt
+    updatedAt
+  }
+}
 
-# SHOW
-curl localhost:8080/products/1
+mutation createUser {
+  createUser(input:{name: "first"}) {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}
 
-# CREATE
-curl localhost:8080/products -X POST -H "Content-Type: application/json" -d '{"code":"EFEFE", "price": 4000}'
+mutation updateTodo {
+  updateTodo(input:{id: 4, text: "hogehoge"}) {
+    text
+    done
+    createdAt
+    updatedAt
+  }
+}
 
-# UPDATE
-curl localhost:8080/products/1 -X PUT -H "Content-Type: application/json" -d '{"code":"EFEFE", "price": 4000}'
+mutation deleteTodo {
+  deleteTodo(input: 1) {
+    text
+    done
+  }
+}
 
-# DELETE
-curl localhost:8080/products/1 -X DELETE
+
+query findTodos {
+  	todos {
+      text
+      done
+      userID
+      user {
+        id
+        name
+      }
+    }
+}
+
+query findTodo {
+  	todo(input: { id: 2}) {
+      text
+      done
+      userID
+      user {
+        id
+        name
+      }
+    }
+}
+
+query findUsers {
+  	users {
+      name
+    }
+}
 ```
