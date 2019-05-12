@@ -2,13 +2,12 @@ package main
 
 import (
 	"gin_graphql/internal/models"
-	"gin_graphql/pkg"
+	connection "gin_graphql/pkg/database"
 )
 
 func main() {
-	db := pkg.Connect("development")
-	defer db.Close()
-	db.LogMode(true)
+	db := connection.GetInstance()
+	defer connection.Close()
 
 	db.AutoMigrate(&models.User{}, &models.Todo{})
 }
