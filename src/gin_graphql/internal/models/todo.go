@@ -10,11 +10,7 @@ type Todo struct {
 	Text      string
 	Done      bool
 	UserID    int
+	User      User
 	CreatedAt time.Time
 	UpdatedAt time.Time
-}
-
-type GTodo struct {
-	gorm.Model
-	Todo
 }

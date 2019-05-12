@@ -7,16 +7,22 @@ type Todo {
   text: String!
   done: Boolean!
   userID: Int!
+  user: User!
   createdAt: Time!
   updatedAt: Time!
 }
 
 type User {
+  id: Int!
   name: String!
+  createdAt: Time!
+  updatedAt: Time!
 }
 
 type Query {
   todos: [Todo!]!
+  users: [User!]!
+  todo(input: FetchTodo): Todo!
 }
 
 input NewTodo {
@@ -24,8 +30,24 @@ input NewTodo {
   userId: Int!
 }
 
+input EditTodo {
+  id: Int!
+  text: String!
+}
+
+input NewUser {
+  name: String!
+}
+
+input FetchTodo {
+  id: Int!
+}
+
 type Mutation {
   createTodo(input: NewTodo!): Todo!
+  updateTodo(input: EditTodo!): Todo!
+  deleteTodo(input: Int!): Todo!
+  createUser(input: NewUser!): User!
 }
 
 scalar Time

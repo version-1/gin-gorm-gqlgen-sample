@@ -2,13 +2,13 @@ package models
 
 import (
 	"github.com/jinzhu/gorm"
+	"time"
 )
 
 type User struct {
-	Name string
-}
-
-type ExtendedUser struct {
-	gorm.Model
-	User
+	ID        int
+	Name      string
+	Todos     []Todo
+	CreatedAt time.Time
+	UpdatedAt time.Time
 }
