@@ -11,9 +11,8 @@ or
 
 ```
 docker-compose run -v $PWD:/app -p 8080:8080 app bash
-cd src/gin-sample
-go run cmd/db/migrate/main.go
-go run cmd/app/main.go
+ENV=development go run cmd/db/migrate/main.go
+ENV=development go run cmd/app/main.go
 ```
 
 

@@ -2,7 +2,6 @@ package gin_graphql
 
 import (
 	"context"
-	"fmt"
 	"gin_graphql/internal/models"
 	connection "gin_graphql/pkg/database"
 )
@@ -12,7 +11,6 @@ var db = connection.GetInstance()
 // THIS CODE IS A STARTING POINT ONLY. IT WILL NOT BE UPDATED WITH SCHEMA CHANGES.
 
 type Resolver struct {
-	todos []models.Todo
 }
 
 func (r *Resolver) Mutation() MutationResolver {
@@ -44,7 +42,7 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input NewTodo) (*mode
 
 func (r *mutationResolver) UpdateTodo(ctx context.Context, input EditTodo) (*models.Todo, error) {
 	todo := models.Todo{ID: input.ID}
-	db.Preload("User").First(&todo)
+	db.First(&todo)
 	todo.Text = input.Text
 	db.Model(&models.Todo{}).Update(&todo)
 
@@ -71,7 +69,6 @@ func (r *queryResolver) Todo(ctx context.Context, input *FetchTodo) (*models.Tod
 func (r *queryResolver) Todos(ctx context.Context) ([]models.Todo, error) {
 	var todos []models.Todo
 	db.Preload("User").Find(&todos)
-	fmt.Println(todos[0].User)
 	return todos, nil
 }
 
